@@ -1,0 +1,15 @@
+body{
+    background: #f17815;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    padding: 10px;
+    box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+
+.carousel-inner{
+    width: 50%;
+    max-width: 100%;
+}
