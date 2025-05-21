@@ -1,15 +1,52 @@
-body{
-    background: #f17815;
+body {
+    background-image: url(../imgs/index-bg.png);
+    background-size: cover;         /* Faz a imagem cobrir toda a tela */
     font-family: Arial, sans-serif;
 }
 
-.navbar {
-    padding: 10px;
-    box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+
+.container-row{
+    display: flex;
+    margin: 10% 0 0 0 ;
+    margin-left: 4%;
+    background: none;
+    box-shadow: none;
+    
+    
 }
 
-.carousel-inner{
-    width: 50%;
-    max-width: 100%;
+.Container-main{
+    background-color: aliceblue;
+    padding: 3%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.0s ease;
+    
 }
+.Container-main.visible {
+    opacity: 0.95;
+}
+
+.cabeçalho{
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: rgb(255, 111, 0) solid 3px;
+}
+
+.inner-buttons h2{
+    font-size: 30px;
+    margin: 2%;
+}
+
+.inner-buttons button{
+    font-size: 25px;
+    width: 100%;
+   
+}
+
+

@@ -8,56 +8,32 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <nav class="navbar" style="background-color: #ffffff;" data-bs-theme="light">
-        <div class="container-fluid">
-    <a class="navbar-brand" href="/index.html">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+  
+  <div class="container-row col-6">
+    <div class="Container-main ">
+      <div class="cabeçalho">
+        <h1>Bem-vindo a Love Pets</h1>
+        <p>Aqui seu bixinho ganha todo amor e atenção que merece</p>
+      </div>
+
+      
+      <div class="inner-buttons ">
+        <div class="d-grid gap-2">
+            <h2>Pode começar Criando uma conta</h2>
+        <a href="./Client-from.html"><button type="button" class="btn btn-outline-success btn-lg" >Começar Agora</button></a>
+            <h2>Ou Fazendo Login</h2>
+          <a href="./Dashboard.html"><button type="button" class="btn btn-outline-primary btn-lg" >Ja tenho uma Conta</button></a>
+        </div>
       </div>
     </div>
   </div>
-</nav>
-
-
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./imgs/slide1.jpeg" class="d-block w-100
-      " alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./imgs/slide2.jpg" class="d-block w-100
-      " alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./imgs/slide3.jpeg" class="d-block w-100
-      " alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-    
-
-
-
-
-
-
-
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.Container-main').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  });
+  </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>   
 </html>
