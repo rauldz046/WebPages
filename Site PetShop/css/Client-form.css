@@ -1,8 +1,8 @@
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background:url(../imgs/Cadastro-img.png);
-    background-repeat: no-repeat;   /* Evita repetição */
-    background-size:cover;         /* Faz a imagem cobrir toda a tela */
+    background-repeat: no-repeat;
+    background-size:cover;
     margin: 0;
 }
 label {
@@ -18,7 +18,7 @@ label {
     border-radius: 20px;
     padding: 2%;
     margin-right: 2%;
-    
+
 }
 .form-client{
     font-size: 15px;
@@ -37,4 +37,3 @@ label {
     border-radius: 4px;
 
 }
-

@@ -1,6 +1,6 @@
 body {
     background-image: url(../imgs/index-bg.png);
-    background-size: cover;         /* Faz a imagem cobrir toda a tela */
+    background-size: cover;
     font-family: Arial, sans-serif;
 }
 
@@ -11,8 +11,6 @@ body {
     margin-left: 4%;
     background: none;
     box-shadow: none;
-    
-    
 }
 
 .Container-main{
@@ -23,7 +21,7 @@ body {
     text-align: center;
     opacity: 0;
     transition: opacity 1.0s ease;
-    
+
 }
 .Container-main.visible {
     opacity: 0.95;
@@ -46,7 +44,5 @@ body {
 .inner-buttons button{
     font-size: 25px;
     width: 100%;
-   
+
 }
-
-
