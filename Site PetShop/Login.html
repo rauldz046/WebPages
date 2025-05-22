@@ -8,19 +8,24 @@
     <link rel="stylesheet" href="./css/Login.css">
 </head>
 <body>
-    
-    <div class="mx-auto p-2 w-25"  style="margin-top: 20%;">
+
+    <div class="mx-auto p-2 w-25"  style="margin-top:20%;">
         <div>
-            <form class="form-control" style="background-color: rgb(245, 145, 51);">
-                <div class=""></div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="@exemplo.com">
+            <form class="form-control" id="form-main" >
+                <div class="inner-form">
+                 <div class="mb-4">
+                    <label  class="form-label">Email</label>
+                     <input type="text" class="form-control" id="Emailconf" placeholder="@exemplo.com" required>
                   </div>
-                  <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Senha</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite sua senha aqui">
+                 <div class="mb-4">
+                    <label class="form-label">Senha</label>
+                     <input type="password" class="form-control" id="Senhaconf" placeholder="Digite sua senha aqui"re>
                   </div>
+                  <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-outline-primary btn-lg p-3 mt-3">Logar</button>
+                  </div>
+                </div>
+
             </form>
         </div>
     </div>
@@ -32,6 +37,6 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 </html>

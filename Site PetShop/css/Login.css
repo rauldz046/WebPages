@@ -1,6 +1,28 @@
+body{
+    background: url(../imgs/login-bg.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 label{
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
 }
 
+input[type="text"], input[type="password"] {
+    font-size: 20px;
+    box-shadow: 0 5px 5px 2px rgba(0, 0, 0, 0.2);
+
+}
+
+#form-main{
+    background:url(../imgs/form-login.avif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding:30px ;
+    border-radius:20px ;
+
+}
