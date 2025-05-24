@@ -1,0 +1,24 @@
+
+
+Informações do banco de dados funcionarios
+
+CREATE TABLE clientes(
+idCli 		int(5) 			not null auto_increment,
+
+nomeCli 	varchar(150) 	not null,
+cpfCli 		varchar	(14) 	not null,
+telefoneCli varchar	(13)			,
+emailCli	varchar(100)			,
+cepCli		varchar	 (9)			,
+ruaCli		varchar(150)			,
+numCli		varchar	 (5)			,
+compCli		varchar	(25)			,
+bairroCli	varchar(100)			,
+cidadeCli	varchar(100)			,
+estadoCli	varchar(100)			,
+fk_idFunc	int(5)					,
+
+primary key(idCli),
+foreign key(fk_idFunc) references funcionarios(idFunc)
+
+);
