@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Interativo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./icons/logo.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container-fluid px-3">
+        <img
+          src="./icons/logo.png"
+          alt="Logo"
+          width="50"
+          class="d-inline-block align-text-top "
+        />
+        <span class="navbar-brand mb-0 h1 ms-2 fs-4">Control Center</span>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menuNav"
+          aria-controls="menuNav"
+          aria-expanded="false"
+          aria-label="Alternar navegação"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse ml-2" id="menuNav">
+          <ul class="navbar-nav me-auto mb-2 ms-4 mb-lg-0 align-items-end">
+            <li class="nav-item align-self-end">
+              <a class="nav-link active fs-3 m-2" aria-current="page" href="../Paginaindex/index.html"
+                >Cadastro</a
+              >
+            </li>
+            <li class="nav-item align-self-end">
+              <a class="nav-link active fs-3 m-2" style="color: rgb(14, 201, 238); font-weight:bold; text-decoration:underline;" aria-current="page" href="/Painel.html"
+                >Painel de Controle</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section>
+      <div class="text-center alt-text" style="color: #ffffff; text-transform: uppercase; font-family:Georgia; letter-spacing: 5px; font-size:1.5rem; font-weight: bold;">
+        Painel de Controle</div>
+    </section>
+
+    <section class="display">
+      <div class="iten-display" id="Livros">
+        <img src="./icons/livro-aberto-capa.svg" style="width: 30px;" alt="">
+        <h2>Livros</h2>
+        <h1 id="di1">0</h1>
+      </div>
+      <div class="iten-display" id="Eletro">
+        <img src="./icons/smartphone.svg" style="width: 30px;" alt="">
+        <h2>Eletrônicos</h2>
+        <h1 id="di2">0</h1>
+      </div>
+      <div class="iten-display" id="Papel">
+        <img src="./icons/cedula.svg" style="width: 30px;" alt="">
+        <h2>Papelaria</h2>
+        <h1 id="di3">0</h1>
+      </div>
+      <div class="iten-display" id="Utili">
+        <img src="./icons/adicionar-aplicativos.svg" style="width: 30px;" alt="">
+        <h2>Utilidades</h2>
+        <h1 id="di4">0</h1>
+      </div>
+    </section>
+
+
+      <div class="text-center alt-text" style="color: #ffffff; text-transform: uppercase; font-family:Georgia; letter-spacing: 5px; font-size:1.5rem; font-weight: bold;">
+        Controle</div>
+
+
+    <section class="action-buttons">
+      <button type="button" class="" id="exportar">Exportar JSON</button>
+      <button type="button" class="" id="botaoImportar">Importar JSON</button>
+      <input type="file" id="inputImportar" accept=".json" style="display: none;">
+    </section>
+
+    <section class="tabela">
+        <div style="max-width: 1000px; margin: auto;">
+          <table class="table table-bordered table-hover">
+            <thead class="table-dark text-center">
+              <tr class="fs-3">
+                <th style="width: 10%;">ID</th>
+                <th style="width: 30%;">Nome</th>
+                <th style="width: 20%;">Categoria</th>
+                <th style="width: 30%;">Ações</th>
+              </tr>
+            </thead>
+              <tbody class="fs-4 p-0" id="listaItens">
+              </tbody>
+          </table>
+          </div>
+    </section>
+
+    <section class="footer">
+      <div class="d-grid gap-2">
+          <button class="btn btn-success btn-sm fs-2" type="button" data-bs-toggle="modal" data-bs-target="#btnAddM">Adicionar novo tópico</button>
+      </div>
+  </section>
+
+
+    <!-- CONFIGURAÇÃO DOS MOLDAIS -->
+
+    <!--BOTÃO DE ADICIONAR -->
+    <div class="modal fade fs-4" id="btnAddM" tabindex="-1" aria-labelledby="btnAddMLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-4" id="btnAddMLabel">Adicione um novo Item</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-add">
+              <div class="d-flex">
+              <div class="col-1" style="margin-right: 3px ;">
+                <label for="recipient-name" class="col-form-label fs-4">ID</label>
+                <input type="text" class="form-control fs-4" id="item-id" disabled >
+              </div>
+              <div class="col-11">
+                <label for="recipient-name" class="col-form-label">Nome do Item:</label>
+                <input type="text" class="form-control fs-4" id="item-name" required maxlength="30" >
+              </div>
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Categoria do item</label>
+                <select name="drop-down" class="form-control fs-4" id="drop-down" required>
+                  <option value="" selected disabled>Selecione...</option>
+                  <option value="L">Livros</option>
+                  <option value="E">Eletônicos</option>
+                  <option value="P">Papelaria</option>
+                  <option value="U">Utilidades</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger fs-4" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success fs-4" data-bs-dismiss="modal">Adicionar</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTÃO EXCLUIR-->
+
+<div class="modal fade fs-4" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body fs-4">
+        <h4>Tem certeza que deseja excluir esse item?</h4>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-primary fs-4" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger fs-4"data-bs-dismiss="modal">Sim eu tenho certeza</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTÃO EDITAR -->
+
+<div class="modal fade" id="btnEditM" tabindex="-1" aria-labelledby="btnEditMLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="btnEditMLabel">Edição de Item</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="d-flex">
+              <div class="col-1" style="margin-right: 3px ;">
+                <label for="recipient-name" class="col-form-label fs-4">ID</label>
+                <input type="text" class="form-control fs-4" id="item-id-edit" disabled >
+              </div>
+            <div class="col-11">
+              <label for="recipient-name" class="col-form-label fs-4">Nome do Item:</label>
+              <input type="text" class="form-control fs-4" id="recipient-name" required maxlength="30">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label fs-4">Categoria do item</label>
+            <select name="drop-down" class="form-control fs-4" id="drop-down-edit" required>
+              <option value="" selected disabled>Selecione...</option>
+              <option value="L">Livros</option>
+              <option value="E">Eletônicos</option>
+              <option value="P">Papelaria</option>
+              <option value="U">Utilidades</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger fs-4" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-info fs-4" style="color: #ffffff;">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="./script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

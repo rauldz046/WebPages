@@ -1,0 +1,373 @@
+[
+      {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+    {
+        "id":0,
+        "nome":"Celular",
+        "categoria":"Eletrônicos"
+    },
+
+  {
+    "id": "1",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "2",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "3",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "4",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "5",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "6",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "7",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "8",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "9",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "10",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "11",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "12",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "13",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "14",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "15",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "16",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "17",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "18",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "19",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "20",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "21",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "22",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "23",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "24",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "25",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "26",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "27",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "28",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "29",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "30",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "31",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "32",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "33",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "34",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "35",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "36",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "37",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "38",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "39",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "40",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "41",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "42",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "43",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "44",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "45",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "46",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "47",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "48",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "49",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  },
+  {
+    "id": "50",
+    "nome": "asdasdasdasda",
+    "categoria": "Livros"
+  }
+]
