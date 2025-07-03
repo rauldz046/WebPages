@@ -29,19 +29,6 @@ td{
     padding: 10px;
 
 }
-#exportar{
-  border-top-left-radius:10px;
-  border-bottom-left-radius:10px;
-  background-color: rgb(127, 146, 255);
-}
-
-
-#botaoImportar{
-  border-bottom-right-radius:10px;
-  border-top-right-radius:10px;
-  background-color: rgb(240, 99, 64);
-}
-
 
 .display {
   display: flex;
@@ -49,6 +36,7 @@ td{
   align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
+
 }
 .iten-display {
   width: 15%;
@@ -70,7 +58,7 @@ td{
   margin: auto auto;
   width: 1000px;
   padding: 10px;
-  border-radius:10px 10px 0 0;
+  border-radius:10px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -83,6 +71,28 @@ td{
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+#exportar{
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+  background-color: rgb(127, 146, 255);
+  transition: 500ms;
+}
+
+#botaoImportar{
+  border-bottom-right-radius:10px;
+  border-top-right-radius:10px;
+  background-color: rgb(240, 99, 64);
+  transition: 500ms;
+}
+
+#exportar:hover{
+
+  background-color: rgb(55, 85, 255);
+}
+#botaoImportar:hover{
+  background-color: rgb(196, 61, 28);
 }
 
 #Livros {
@@ -123,4 +133,79 @@ td{
 #Utili:hover {
   background: linear-gradient(135deg, rgb(100, 230, 100) 10%, rgb(70, 209, 70) 100%);
   box-shadow: 0 0 30px rgba(70, 209, 70, 0.5);
+}
+
+
+/* RESPONSIVIDADE */
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+
+  /* Ajustando o layout das caixas */
+  .display {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .iten-display {
+    width: 80%;
+    margin: 1rem 0;
+  }
+
+  /* Ajustando os botões e o filtro */
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Filtro ocupa 100% da largura no celular */
+  .action-buttons label,
+  .action-buttons select,
+  .action-buttons button {
+    width: 90%;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+
+  /* Ajustando a tabela */
+  .tabela {
+    width: 95%;
+    padding: 5px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  /* Ajustando o tamanho da navbar */
+  .navbar-brand {
+    font-size: 1.2rem !important;
+  }
+
+  .nav-link {
+    font-size: 1.1rem !important;
+  }
+
+  /* Ajustando os botões da footer */
+  .footer button {
+    font-size: 1.2rem !important;
+    padding: 10px;
+  }
+
+  /* Ajustando os botões de importação e exportação */
+  #exportar, #botaoImportar {
+    width: 90%;
+    font-size: 1.2rem;
+    padding: 12px;
+  }
+
+  /* Ajustando a navbar para tornar o texto mais legível */
+  .navbar-toggler-icon {
+    background-color: white;
+  }
+  #filter{
+    width: 50% !important;
+
+
+  }
 }

@@ -7,16 +7,15 @@ let ContadorPapel = 0;
 let ContadorUtili = 0;
 
 
-  // EVENTO DE ADICIONAR ITEM A LISTA
+
 form.addEventListener("submit", function (event) {
-  event.preventDefault();
+  event.preventDefault(); // impede o recarregamento
 
-    const nome = document.getElementById("item-name").value;
-    const categoriaValor = document.getElementById("drop-down").value;
-    let categoria = "";
+  const nome = document.getElementById("item-name").value;
+  const categoriaValor = document.getElementById("drop-down").value;
+  let categoria = "";
 
-    // Relacionar os Valores do Dropdown para os itens da lista e
-    // Copntabiliza os id's individualmente
+
   switch (categoriaValor) {
     case "L":
       categoria = "Livros";
@@ -38,149 +37,148 @@ form.addEventListener("submit", function (event) {
       categoria = "Desconhecido";
   }
 
-    // Cria um novo item na lista
   const novaLinha = document.createElement("tr");
   novaLinha.innerHTML = `
     <td class='fs-2 text-center'>${ContadorID}</td>
     <td class='fs-2 text-center'><strong>${nome}</strong></td>
     <td class='fs-2 text-center'>${categoria}</td>
     <td class="text-center">
-        <button class="btn btn-info btn-sm fs-3" style="color: aliceblue;" data-bs-toggle="modal" data-bs-target="#btnEditM">Editar</button>
-        <button class="btn btn-danger btn-sm fs-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>
+        <button class="btn btn-info btn-sm fs-4" style="color: aliceblue;" data-bs-toggle="modal" data-bs-target="#btnEditM"
+        data-bs-toggle="tooltip" title="Edita o Item"><i class="bi bi-pen"></i></button>
+        <button class="btn btn-danger btn-sm fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        data-bs-toggle="tooltip" title="Excluir o Item"><i class="bi bi-trash-fill"></i></button>
     </td>
     `;
   lista.appendChild(novaLinha);
 
-
-  // adiciona o Id na listagem e faz seu incremento
   document.getElementById("item-id").innerHTML = ContadorID;
   ContadorID++;
   form.reset();
 
-  // Realiza a checagem de qual item da lista foi adicionado
-  // de acordo com cada contador individual
   document.getElementById('di1').innerHTML= ContadorLivros
   document.getElementById('di2').innerHTML= ContadorElet
   document.getElementById('di3').innerHTML= ContadorPapel
   document.getElementById('di4').innerHTML= ContadorUtili
+  addAlert(1);
 
 });
 
+let linhaEditando = null;
 
-    // EVENTO DE EDIÇÃO DOS ITENS DA LISTA
-  let linhaEditando = null;
-
-  document.getElementById("listaItens").addEventListener("click", function (event) {
-
-    if (event.target.classList.contains("btn-info")) {
-      linhaEditando = event.target.closest("tr");
-
-      document.getElementById("recipient-name").value =
-        linhaEditando.children[1].innerText.trim();
-        document.getElementById("item-id-edit").value = linhaEditando.children[0].innerText.trim();
-
-      // faz a cobferencia se os itens da lista são validos
-      const categoriaTexto = linhaEditando.children[2].innerText.trim();
-      const select = document.getElementById("drop-down-edit");
-      for (let opt of select.options) {
-        if (
-          (categoriaTexto === "Livros" && opt.value === "L") ||
-          (categoriaTexto === "Eletrônicos" && opt.value === "E") ||
-          (categoriaTexto === "Papelaria" && opt.value === "P") ||
-          (categoriaTexto === "Utilidades" && opt.value === "U")
-        ) {
-          opt.selected = true;
-        }
-      }
-    }
-  });
-      // Realiza a verificação se os itens do dropdown foram alterados
-  document .querySelector("#btnEditM .btn-info") .addEventListener("click", function () {
-    if (linhaEditando) {
-
-      linhaEditando.children[1].innerText =
-        document.getElementById("recipient-name").value;
-      const select = document.getElementById("drop-down-edit");
-      let categoriaAntiga = linhaEditando.children[2].innerText.trim();
-      let categoriaNova = "";
-      let mudouCategoria = false;
-
-      switch (select.value) {
-        case "L":
-          categoriaNova = "Livros";
-          break;
-        case "E":
-          categoriaNova = "Eletrônicos";
-          break;
-        case "P":
-          categoriaNova = "Papelaria";
-          break;
-        case "U":
-          categoriaNova = "Utilidades";
-          break;
-        default:
-          categoriaNova = "";
-      }
-
-      // Se mudou de categoria, ajusta os contadores
-      if (categoriaAntiga !== categoriaNova) {
-        switch (categoriaAntiga) {
-          case "Livros":
-            ContadorLivros--;
-            break;
-          case "Eletrônicos":
-            ContadorElet--;
-            break;
-          case "Papelaria":
-            ContadorPapel--;
-            break;
-          case "Utilidades":
-            ContadorUtili--;
-            break;
-        }
-        switch (categoriaNova) {
-          case "Livros":
-            ContadorLivros++;
-            break;
-          case "Eletrônicos":
-            ContadorElet++;
-            break;
-          case "Papelaria":
-            ContadorPapel++;
-            break;
-          case "Utilidades":
-            ContadorUtili++;
-            break;
-        }
-      }
-
-      // Atuzaliza conforme a edição foi feita
-      document.getElementById('di1').innerHTML = ContadorLivros;
-      document.getElementById('di2').innerHTML = ContadorElet;
-      document.getElementById('di3').innerHTML = ContadorPapel;
-      document.getElementById('di4').innerHTML = ContadorUtili;
-
-      linhaEditando.children[2].innerText = categoriaNova;
-      linhaEditando = null;
-      // Fecha o modal
-      const modal = bootstrap.Modal.getInstance(
-        document.getElementById("btnEditM")
-      );
-      modal.hide();
-    }
-  });
-
-    // EVENTO DE REMOVER ITEM
-  let linhaParaRemover = null;
-
+// Ao clicar no botão de editar na tabela
 lista.addEventListener("click", function (event) {
-  if (event.target.classList.contains("btn-danger")) {
-    linhaParaRemover = event.target.closest("tr");
+  // Verifica se clicou no botão de editar (ícone de lápis)
+  if (
+    event.target.closest("button") &&
+    event.target.closest("button").classList.contains("btn-info")
+  ) {
+    linhaEditando = event.target.closest("tr");
+    // Preenche o modal com os dados da linha
+    document.getElementById("item-id-edit").value = linhaEditando.children[0].innerText.trim();
+    document.getElementById("recipient-name").value = linhaEditando.children[1].innerText.trim();
+    // Seleciona a categoria correta
+    const categoriaTexto = linhaEditando.children[2].innerText.trim();
+    let select = document.getElementById("drop-down-edit");
+    for (let opt of select.options) {
+      opt.selected = false;
+      if (
+        (categoriaTexto === "Livros" && opt.value === "L") ||
+        (categoriaTexto === "Eletrônicos" && opt.value === "E") ||
+        (categoriaTexto === "Papelaria" && opt.value === "P") ||
+        (categoriaTexto === "Utilidades" && opt.value === "U")
+      ) {
+        opt.selected = true;
+      }
+    }
+  }
+});
+
+// Ao clicar no botão "Editar" do modal
+document.querySelector('#btnEditM .btn-info').addEventListener("click", function () {
+  if (linhaEditando) {
+    // Atualiza o nome
+    linhaEditando.children[1].innerText = document.getElementById("recipient-name").value;
+    // Atualiza a categoria e os contadores
+    const select = document.getElementById("drop-down-edit");
+    let categoriaAntiga = linhaEditando.children[2].innerText.trim();
+    let categoriaNova = "";
+    switch (select.value) {
+      case "L":
+        categoriaNova = "Livros";
+        break;
+      case "E":
+        categoriaNova = "Eletrônicos";
+        break;
+      case "P":
+        categoriaNova = "Papelaria";
+        break;
+      case "U":
+        categoriaNova = "Utilidades";
+        break;
+      default:
+        categoriaNova = "";
+    }
+
+    // Ajusta os contadores se mudou de categoria
+    if (categoriaAntiga !== categoriaNova) {
+      switch (categoriaAntiga) {
+        case "Livros":
+          ContadorLivros--;
+          break;
+        case "Eletrônicos":
+          ContadorElet--;
+          break;
+        case "Papelaria":
+          ContadorPapel--;
+          break;
+        case "Utilidades":
+          ContadorUtili--;
+          break;
+      }
+      switch (categoriaNova) {
+        case "Livros":
+          ContadorLivros++;
+          break;
+        case "Eletrônicos":
+          ContadorElet++;
+          break;
+        case "Papelaria":
+          ContadorPapel++;
+          break;
+        case "Utilidades":
+          ContadorUtili++;
+          break;
+      }
+    }
+
+    document.getElementById('di1').innerHTML = ContadorLivros;
+    document.getElementById('di2').innerHTML = ContadorElet;
+    document.getElementById('di3').innerHTML = ContadorPapel;
+    document.getElementById('di4').innerHTML = ContadorUtili;
+
+    linhaEditando.children[2].innerText = categoriaNova;
+    linhaEditando = null;
+
+    // Fecha o modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById("btnEditM"));
+    modal.hide();
+    addAlert(2);
   }
 });
 
 
-document.querySelector('#exampleModal .btn-danger').addEventListener("click", function () {
+  let linhaParaRemover = null;
+
+// Ao clicar no botão Remover na tabela
+lista.addEventListener("click", function (event) {
+  const btn = event.target.closest("button.btn-danger");
+  if (btn) {
+    linhaParaRemover = btn.closest("tr");
+  }
+});
+
+// Ao clicar no botão "Sim eu tenho certeza" do modal
+document.querySelector('#deletconf').addEventListener("click", function () {
   if (linhaParaRemover) {
     const categoria = linhaParaRemover.children[2].innerText.trim();
     switch (categoria) {
@@ -203,6 +201,7 @@ document.querySelector('#exampleModal .btn-danger').addEventListener("click", fu
     document.getElementById('di4').innerHTML = ContadorUtili;
 
     linhaParaRemover.remove();
+    addAlert(3);
     linhaParaRemover = null;
   }
 });
@@ -238,7 +237,7 @@ document.getElementById("exportar").addEventListener("click", function () {
 
   const link = document.createElement("a");
   link.href = url;
-  link.download = "listagem_de_itens.json";
+  link.download = "catalogo.json";
   link.click();
 });
 
@@ -272,7 +271,7 @@ document
       });
  */
 
-      // CORREÇÃO DO ERRO DE IMPORTAÇÃO DE CONTAGEM DOS ITENS
+      lista.innerHTML = ""; // limpa a lista atual
 
       // Zera os contadores antes de somar os importados
       ContadorLivros = 0;
@@ -313,8 +312,10 @@ document
           <td><strong>${item.nome}</strong></td>
           <td><em>${item.categoria}</em></td>
           <td>
-            <button class="btn btn-info btn-sm fs-3" style="color: aliceblue;" data-bs-toggle="modal" data-bs-target="#btnEditM">Editar</button>
-            <button class="btn btn-danger btn-sm fs-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Remover</button>
+            <button class="btn btn-info btn-sm fs-4" style="color: aliceblue;" data-bs-toggle="tootip" data-bs-target="#btnEditM"
+             title="Editar o Item"><i class="bi bi-pen"></i></button>
+            <button class="btn btn-danger btn-sm fs-4" data-bs-toggle="tooltip" data-bs-target="#exampleModal"
+             title="Excluir o Item"><i class="bi bi-trash-fill"></i></button>
           </td>
         `;
           lista.appendChild(novaLinha);
@@ -326,3 +327,110 @@ document
 
     leitor.readAsText(arquivo);
   });
+
+
+  function Filter() {
+    let filtro = document.getElementById("filter").value;
+    let linhas = document.querySelectorAll("#listaItens tr");
+
+    linhas.forEach((tr) => {
+      let categoria = tr.cells[2].innerText.trim();
+      tr.style.display = filtro === "" || categoria === filtro ? "" : "none";
+    });
+  }
+
+  function FilterLivro() {
+    let filtro = document.getElementById("filter").value;
+    let linhas = document.querySelectorAll("#listaItens tr");
+
+    linhas.forEach((tr) => {
+      let categoria = tr.cells[2].innerText.trim();
+      tr.style.display = filtro === "" || categoria === "Livros" ? "" : "none";
+    });
+  }
+
+  function FilterEletro() {
+    let filtro = document.getElementById("filter").value;
+    let linhas = document.querySelectorAll("#listaItens tr");
+
+    linhas.forEach((tr) => {
+      let categoria = tr.cells[2].innerText.trim();
+      tr.style.display =
+        filtro === "" || categoria === "Eletrônicos" ? "" : "none";
+    });
+  }
+
+  function FilterPapel() {
+    let filtro = document.getElementById("filter").value;
+    let linhas = document.querySelectorAll("#listaItens tr");
+
+    linhas.forEach((tr) => {
+      let categoria = tr.cells[2].innerText.trim();
+      tr.style.display =
+        filtro === "" || categoria === "Papelaria" ? "" : "none";
+    });
+  }
+
+  function FilterUtili() {
+    let filtro = document.getElementById("filter").value;
+    let linhas = document.querySelectorAll("#listaItens tr");
+
+    linhas.forEach((tr) => {
+      let categoria = tr.cells[2].innerText.trim();
+      tr.style.display =
+        filtro === "" || categoria === "Utilidades" ? "" : "none";
+    });
+  }
+
+
+
+
+  function addAlert(valve){
+    var color = "";
+    var text = "";
+    /*
+      1 = Adicionar
+      2 = Editar
+      3 = Excluir
+    */
+    switch(valve){
+      case 1:
+        color = 'success';
+        text = 'Item Cadastrado com Sucesso';
+        break;
+      case 2:
+        color = 'info';
+        text = 'Edição foi Salva';
+        break;
+      case 3:
+        color = 'danger';
+        text = 'O item foi excluido';
+        break;
+      default:
+        break;
+    };
+
+    var mensage =`
+    <div class="alert alert-${color} p-3 alert-dismissible fade show" role="alert"
+    style=" position: fixed; z-index: 5; margin: 0;">
+      <h4>${text}</h4>
+    </div>`;
+
+    // Adiciona o alerta e pega referência ao elemento criado
+    document.getElementById('alert').insertAdjacentHTML('beforeend', mensage);
+    var alertas = document.querySelectorAll('#alert .alert');
+    var alertaAtual = alertas[alertas.length - 1];
+
+    // Remove o alerta após 3 segundos (3000 ms)
+    setTimeout(function() {
+      if (alertaAtual) {
+        alertaAtual.classList.remove('show');
+        alertaAtual.classList.add('hide');
+        setTimeout(function() {
+          if (alertaAtual.parentNode) {
+            alertaAtual.parentNode.removeChild(alertaAtual);
+          }
+        }, 500); // tempo para animação fade out
+      }
+    }, 2000);
+  }

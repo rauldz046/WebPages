@@ -1,0 +1,88 @@
+h1{
+    display: inline-flex;
+    color: #ffff;
+}
+form{
+    display: flex;
+}
+
+/* .inner-content button{
+    width: 20%;
+    border: none;
+    height: 6rem;
+}
+.inner-content input{
+    width: 80%;
+    height: 6rem;
+    
+} */
+
+.side-bar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui os <li> igualmente */
+    height: 100%;                   /* Ocupa toda a altura da sidebar */
+    padding: 6px;
+    margin-bottom: 20%;
+    margin-top: 20%;
+    list-style: none;
+}
+
+.side-bar{
+    position: fixed;
+    background-color: rgb(152, 169, 245);
+    padding-top:4%;
+    height: 100%;
+    width: 25dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-perfile{
+    background-color: rgb(65, 65, 226);
+    margin-top: auto;
+    height: 25vh;
+}  
+
+.content-main{
+    padding-top: 10vh;
+    padding-left: 5vh;
+    margin: 0 auto;
+    width: 100vh;
+    
+}
+
+.inner-content{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
+   
+    
+}
+.list-item{
+    display: flex;
+    margin-left:1%;
+    margin-top:1%;
+    width: 98%;
+    border-radius: 5%;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(224, 224, 224);     
+}
+
+.number{
+    border: 2px solid;
+}
+.name{
+    border: 2px solid;
+}
+
+.ação{
+    border: 2px solid;
+}
+
+
+#navbar{
+    width: 100%;
+}
+
