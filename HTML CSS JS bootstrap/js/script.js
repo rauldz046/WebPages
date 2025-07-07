@@ -1,6 +1,7 @@
 // Definido variaveis globais
 const tabela = document.getElementById("main-table")
 var idconter = 0;
+let dark = false;
 
 
 function adicionar(event) {
@@ -190,7 +191,95 @@ function alertadd(valor){
         content.innerHTML = "";
     }, 2000);
 
-
-
-
 }
+
+
+function darkmode(){
+    let emoji = document.getElementById("emoji");
+    emoji.innerHTML = "☀️";
+
+    // Body
+    let body = document.getElementsByClassName("body");
+    for (let i = 0; i < body.length; i++) {
+        body[i].className = "body-dark";
+    }
+
+    // Sidebar
+    let sidebar = document.getElementsByClassName("side-bar");
+    for (let i = 0; i < sidebar.length; i++) {
+        sidebar[i].className = "sidebar-dark";
+    }
+
+    // User profile
+    let user = document.getElementsByClassName("user-perfile");
+    for (let i = 0; i < user.length; i++) {
+        user[i].className = "user-perfile-dark";
+    }
+
+    // Input container
+    let input = document.getElementsByClassName("inner-content");
+    for (let i = 0; i < input.length; i++) {
+        input[i].className = "inner-content-dark";
+    }
+
+    // Tabela
+    let tabela = document.getElementsByClassName("table table-striped mt-5");
+    for (let i = 0; i < tabela.length; i++) {
+        tabela[i].className = "table-dark table table-striped mt-5";
+    }
+}
+
+function lightmode(){
+    let emoji = document.getElementById("emoji");
+    emoji.innerHTML = "🌕";
+
+    // Body
+    let body = document.getElementsByClassName("body-dark");
+    for (let i = 0; i < body.length; i++) {
+        body[i].className = "body";
+    }
+
+    // Sidebar
+    let sidebar = document.getElementsByClassName("sidebar-dark");
+    for (let i = 0; i < sidebar.length; i++) {
+        sidebar[i].className = "side-bar";
+    }
+
+    // User profile
+    let user = document.getElementsByClassName("user-perfile-dark");
+    for (let i = 0; i < user.length; i++) {
+        user[i].className = "user-perfile";
+    }
+
+    // Input container
+    let input = document.getElementsByClassName("inner-content-dark");
+    for (let i = 0; i < input.length; i++) {
+        input[i].className = "inner-content";
+    }
+
+    // Tabela
+    let tabela = document.getElementsByClassName("table-dark table table-striped mt-5");
+    for (let i = 0; i < tabela.length; i++) {
+        tabela[i].className = "table table-striped mt-5";
+    }
+}
+
+function toggleMode() {
+    if (dark) {
+        lightmode();
+    } else {
+        darkmode();
+    }
+    dark = !dark;
+    localStorage.setItem("darkmode", dark ? "1" : "0"); // Salva o estado
+}
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    loadtable();
+    // Restaura o modo escuro se estava ativo
+    if (localStorage.getItem("darkmode") === "1") {
+        dark = false; // Para garantir que toggleMode ative o darkmode
+        toggleMode();
+    }
+});

@@ -6,17 +6,6 @@ form{
     display: flex;
 }
 
-/* .inner-content button{
-    width: 20%;
-    border: none;
-    height: 6rem;
-}
-.inner-content input{
-    width: 80%;
-    height: 6rem;
-
-} */
-
 .side-bar ul {
     display: flex;
     flex-direction: column;
@@ -50,6 +39,7 @@ form{
     margin: 0 auto;
     width: 100vh;
 
+
 }
 
 .inner-content{
@@ -68,6 +58,7 @@ form{
     text-align: center;
     align-items: center;
     background-color: rgb(224, 224, 224);
+
 }
 
 .number{
@@ -93,4 +84,69 @@ form{
     max-width: 90vw;
     pointer-events: none;
     text-align: center;
+}
+
+/* DARK MODE */
+
+
+
+.body-dark{
+    background-color: rgb(53, 53, 53);
+}
+
+.sidebar-dark{
+    background-color: rgb(39, 51, 97);
+    position: fixed;
+    padding-top:4%;
+    height: 100%;
+    width: 25dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-dark ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui os <li> igualmente */
+    height: 100%;                   /* Ocupa toda a altura da sidebar */
+    padding: 6px;
+    margin-bottom: 20%;
+    margin-top: 20%;
+    list-style: none;
+}
+
+.user-perfile-dark{
+    background-color: rgb(24, 24, 158);
+    margin-top: auto;
+    height: 25vh;
+}
+
+.inner-content-dark input{
+    background-color: rgb(161, 162, 163);
+    color: aliceblue;
+    border: none;
+}
+
+.inner-content-dark button {
+    background-color: rgb(24, 95, 18) !important;
+    color: rgb(214, 213, 213) !important;
+    border:none;
+
+
+}
+
+
+/* configuração de trasição */
+
+body,
+.body-dark,
+.side-bar,
+.sidebar-dark,
+.user-perfile,
+.user-perfile-dark,
+.inner-content input,
+.inner-content-dark input,
+.inner-content button,
+.inner-content-dark button {
+    transition: background-color 0.4s, color 0.4s;
 }
