@@ -14,8 +14,8 @@
      <div class="content-flued" style="margin-left:20px;;">
         <h1>HabitTracker</h1>
      </div>
-     <div id="tema-claro" style="margin-right:15px;"><h1 id="emoji" onclick="toggleMode()">🌕</h1></div>
-     <!-- <div id="tema-escuro">☀️</div> -->
+     <div style="margin-right:15px; cursor: pointer;"><h1 id="emoji" onclick="toggleMode()">🌕</h1></div>
+
     </nav>
   <div id="alert" class="position-fixed z-1 fs-2 w-50 text-align-center"></div>
 
@@ -29,7 +29,17 @@
                 <li>e</li>
                 <li>f</li>
             </ul>
-            <div class="user-perfile"></div>
+            <div class="user-perfile">
+              <div class="mt-2">
+                <img src="https://img.freepik.com/vetores-gratis/circulo-azul-com-usuario-branco_78370-4707.jpg?semt=ais_hybrid&w=740">
+                <h1 id="username"></h1>
+                <div>
+                  <p style="color: aliceblue;" class="fs-2">Nivel: <span id="lv"></span></p>
+                </div>
+              </div>
+
+
+            </div>
         </div>
     </section>
 

@@ -9,8 +9,8 @@ form{
 .side-bar ul {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribui os <li> igualmente */
-    height: 100%;                   /* Ocupa toda a altura da sidebar */
+    justify-content: space-between;
+    height: 100%;
     padding: 6px;
     margin-bottom: 20%;
     margin-top: 20%;
@@ -31,6 +31,21 @@ form{
     background-color: rgb(65, 65, 226);
     margin-top: auto;
     height: 25vh;
+    padding-left:3%;
+    border-top-left-radius: 10%;
+    border-top-right-radius:10%;
+}
+
+.user-perfile img {
+    margin-bottom:3%;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.user-perfile h1{
+margin-left: 2%;
+margin-top: 3%;
+
 }
 
 .content-main{
@@ -38,17 +53,14 @@ form{
     padding-left: 5vh;
     margin: 0 auto;
     width: 100vh;
-
-
 }
 
 .inner-content{
     display: flex;
     flex-wrap: wrap;
     padding: 1%;
-
-
 }
+
 .list-item{
     display: flex;
     margin-left:1%;
@@ -58,7 +70,6 @@ form{
     text-align: center;
     align-items: center;
     background-color: rgb(224, 224, 224);
-
 }
 
 .number{
@@ -87,8 +98,6 @@ form{
 }
 
 /* DARK MODE */
-
-
 
 .body-dark{
     background-color: rgb(53, 53, 53);
@@ -119,6 +128,21 @@ form{
     background-color: rgb(24, 24, 158);
     margin-top: auto;
     height: 25vh;
+    padding-left: 3%;   /* Adicionado */
+    border-top-left-radius: 10%;
+    border-top-right-radius:10%;
+}
+
+.user-perfile-dark img {
+    margin-bottom: 3%;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.user-perfile-dark h1{
+margin-left: 2%;
+margin-top: 3%;
+
 }
 
 .inner-content-dark input{

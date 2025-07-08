@@ -52,7 +52,7 @@ function switchch(checkbox) {
         valores.push(tds,botoes)
 
     } else {
-        tds.forEach(td =>{ td.style.backgroundColor = "#b9b5b5"; td.style.color = "#888"});
+        tds.forEach(td =>{ td.style.backgroundColor = "#505050"; td.style.color = "#888"});
         botoes.forEach(btn => btn.disabled = true);
 
     }
@@ -283,3 +283,17 @@ window.addEventListener('DOMContentLoaded', function() {
         toggleMode();
     }
 });
+
+
+function loginconfig(){
+let nome = localStorage.getItem("nome");
+let nivel= localStorage.getItem("nivel");
+let outnome = document.getElementById("username");
+let outnivel= document.getElementById("lv");
+
+outnome.innerHTML= nome;
+outnivel.innerHTML= nivel;
+
+
+}
+loginconfig()
