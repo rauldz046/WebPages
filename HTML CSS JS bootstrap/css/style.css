@@ -140,6 +140,20 @@ margin-top: 3%;
     margin-left: 1%;
 }
 
+.sidebar-dark #total{
+    background-color:rgb(44, 82, 204) !important ;
+    border: none !important;
+}
+.sidebar-dark #concl{
+    background-color:rgb(18, 117, 34) !important;
+    border: none !important;
+}
+.sidebar-dark #peden{
+    background-color:rgb(177, 130, 68) !important;
+    border: none !important;
+
+}
+
 .user-perfile-dark{
     background-color: rgb(24, 24, 158);
     margin-top: auto;
@@ -160,6 +174,11 @@ margin-left: 2%;
 margin-top: 3%;
 
 }
+.inner-content-dark{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
+}
 
 .inner-content-dark input{
     background-color: rgb(161, 162, 163);
@@ -171,8 +190,6 @@ margin-top: 3%;
     background-color: rgb(24, 95, 18) !important;
     color: rgb(214, 213, 213) !important;
     border:none;
-
-
 }
 
 
@@ -182,11 +199,15 @@ body,
 .body-dark,
 .side-bar,
 .sidebar-dark,
+.sidebar-dark #total,
+.sidebar-dark #concl,
+.sidebar-dark #peden,
 .user-perfile,
 .user-perfile-dark,
+.inner-content-dark,
 .inner-content input,
 .inner-content-dark input,
 .inner-content button,
 .inner-content-dark button {
-    transition: background-color 0.4s, color 0.4s;
+    transition: background-color 0.6s, color 0.6s;
 }

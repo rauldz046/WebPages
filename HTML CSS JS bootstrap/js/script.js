@@ -72,12 +72,14 @@ function adicionar(event) {
 
 function switchch(checkbox) {
 
+    let mode = localStorage.getItem("darkmode")
     let linha = checkbox.closest("tr");
     let tds = linha.querySelectorAll("td");
     let botoes = linha.querySelectorAll("button");
 
     if (checkbox.checked) {
         //Tarefa Ativa
+
         tds.forEach(td => {td.style.backgroundColor = "";
             td.style.color = ""});
         botoes.forEach(btn => btn.disabled = false);
@@ -90,15 +92,32 @@ function switchch(checkbox) {
 
          //Tarefa Concluida
     else {
+
+        if (mode =="1"){
+
         tds.forEach(td =>{ td.style.backgroundColor = "#505050";
         td.style.color = "#888"});
         botoes.forEach(btn => btn.disabled = true);
 
         tarefasConcluidasId++;
 
+        tarefasPendetesId--;
+        if(tarefasPendetesId < 0) tarefasPendetesId = 0;
+
+
+        }
+        else{
+
+        tds.forEach(td =>{ td.style.backgroundColor = "#d1c6c3";
+        td.style.color = "#888"});
+        botoes.forEach(btn => btn.disabled = true);
+
+        tarefasConcluidasId++;
 
         tarefasPendetesId--;
         if(tarefasPendetesId < 0) tarefasPendetesId = 0;
+
+        }
     }
 
     conlcuidas.innerHTML = tarefasConcluidasId
@@ -360,7 +379,7 @@ for (let i = 0; i < sidebar.length; i++) {
  ("table table-striped mt-5");
 
  for (let i = 0; i < tabela.length; i++) {
-    tabela[i].className = "table-dark table table-striped mt-5";
+    tabela[i].className = "table-dark table  table-striped mt-5";
  }
 }
 
