@@ -1,12 +1,34 @@
 // Definido variaveis globais
-const tabela = document.getElementById("main-table")
 var idconter = 0;
+var tarefasTotaisId = 0;
+var tarefasConcluidasId = 0;
+var tarefasPendetesId = 0;
+let linharemove = null;
 let dark = false;
+const tabela = document.getElementById("main-table")
 
 
+ // Cofigurações globais
+let total = document.getElementById("cont")
+total.innerHTML= tarefasTotaisId;
+
+let conlcuidas = document.getElementById("done");
+conlcuidas.innerHTML = tarefasConcluidasId;
+
+let pendentes = document.getElementById("open");
+pendentes .innerHTML = tarefasPendetesId;
+
+loginconfig()
+
+tabela.addEventListener('input', cachetable);
+window.addEventListener('DOMContentLoaded', loadtable);
+
+
+ // Funçoes Principais
 function adicionar(event) {
     event.preventDefault();
 
+    let total = document.getElementById("cont");
     let tabela = document.getElementById("main-table");
     let item = document.getElementById("tarefa").value.trim();
 
@@ -19,7 +41,8 @@ function adicionar(event) {
     let linha = `<tr style="text-align: center">
         <td class="fs-4">
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" checked onchange="switchch(this)">
+                <input class="form-check-input" type="checkbox"
+                checked onchange="switchch(this)">
             </div>
         </td>
         <td class="fs-4">${idconter}</td>
@@ -35,7 +58,16 @@ function adicionar(event) {
     tabela.insertAdjacentHTML("beforeend", linha);
     document.getElementById("tarefa").value = "";
     document.getElementById("tarefa").focus();
+
+    tarefasTotaisId++;
+    total.innerHTML= tarefasTotaisId;
+    localStorage.setItem("total",tarefasTotaisId);
+
+    tarefasPendetesId++;
+    pendentes.innerHTML = tarefasPendetesId;
+    localStorage.setItem("pendentes",tarefasPendetesId)
     alertadd(1)
+
 };
 
 function switchch(checkbox) {
@@ -44,32 +76,55 @@ function switchch(checkbox) {
     let tds = linha.querySelectorAll("td");
     let botoes = linha.querySelectorAll("button");
 
-
     if (checkbox.checked) {
-
-        tds.forEach(td => {td.style.backgroundColor = ""; td.style.color = ""});
+        //Tarefa Ativa
+        tds.forEach(td => {td.style.backgroundColor = "";
+            td.style.color = ""});
         botoes.forEach(btn => btn.disabled = false);
-        valores.push(tds,botoes)
 
-    } else {
-        tds.forEach(td =>{ td.style.backgroundColor = "#505050"; td.style.color = "#888"});
+        tarefasConcluidasId--;
+        if(tarefasConcluidasId < 0) tarefasConcluidasId = 0;
+
+        tarefasPendetesId++;
+    }
+
+         //Tarefa Concluida
+    else {
+        tds.forEach(td =>{ td.style.backgroundColor = "#505050";
+        td.style.color = "#888"});
         botoes.forEach(btn => btn.disabled = true);
 
+        tarefasConcluidasId++;
+
+
+        tarefasPendetesId--;
+        if(tarefasPendetesId < 0) tarefasPendetesId = 0;
     }
+
+    conlcuidas.innerHTML = tarefasConcluidasId
+    localStorage.setItem("concluidas",tarefasConcluidasId);
+
+    pendentes.innerHTML = tarefasPendetesId;
+    localStorage.setItem("pendentes",tarefasPendetesId);
+    cachetable();
+
 }
 
 function abrirModal(botao) {
 
     let linha = botao.closest("tr");
-    document.querySelectorAll("tr.editando").forEach(tr => tr.classList.remove("editando"));
+    document.querySelectorAll("tr.editando").forEach
+    (tr => tr.classList.remove("editando"));
     linha.classList.add("editando");
 
-    var item = linha.querySelectorAll("td")[2].textContent.trim();
+    var item = linha.querySelectorAll("td")[2]
+    .textContent.trim();
     document.getElementById("nomeedit").value = item;
 }
 
 function SalvaEdit() {
-    let novoValor = document.getElementById("nomeedit").value.trim();
+    let novoValor = document.getElementById("nomeedit")
+    .value.trim();
 
     let linha = document.querySelector("tr.editando");
 
@@ -78,7 +133,8 @@ function SalvaEdit() {
         linha.classList.remove("editando");
     }
 
-    let modal = bootstrap.Modal.getInstance(document.getElementById('Modaledit'));
+    let modal = bootstrap.Modal.getInstance
+    (document.getElementById('Modaledit'));
     if (modal) modal.hide();
 
     // Reatribuir foco
@@ -87,17 +143,17 @@ function SalvaEdit() {
     alertadd(2);
 }
 
-let linharemove = null;
-
 function Remover(botao) {
-
     linharemove = botao.closest("tr");
     console.log(linharemove);
     return linharemove;
 }
 
 function confremover() {
-    let modal = bootstrap.Modal.getInstance(document.getElementById('Modaldelete'));
+    let total = document.getElementById("cont")
+    let modal = bootstrap.Modal.getInstance
+    (document.getElementById('Modaldelete'));
+
     if (modal) modal.hide();
 
     if (linharemove) {
@@ -106,47 +162,123 @@ function confremover() {
         cachetable();
     }
 
-    // Reatribuir foco
+
+    tarefasTotaisId--;
+    if(tarefasTotaisId < 0) tarefasTotaisId = 0;
+    total.innerHTML= tarefasTotaisId;
+    localStorage.setItem("total",tarefasTotaisId)
+
+    tarefasPendetesId--;
+    if(tarefasPendetesId < 0) tarefasPendetesId = 0;
+    pendentes.innerHTML = tarefasPendetesId;
+    localStorage.setItem("pendentes",tarefasPendetesId);
+
+    cachetable();
+
     document.getElementById("tarefa").focus();
     alertadd(3);
 }
 
-
 // Funçoes para salvar a tabela no localStorage
 
-    function cachetable(){
+function cachetable(){
       localStorage.setItem("loadtable", tabela.innerHTML);
-      localStorage.setItem("idtable", idconter)
-      localStorage.setItem("check",switchch)
-    }
+      localStorage.setItem("idtable", idconter);
+      localStorage.setItem("check",switchch);
+      localStorage.setItem("total",tarefasTotaisId);
+      localStorage.setItem("concluidas",tarefasConcluidasId);
+      localStorage.setItem("pendentes",tarefasPendetesId);
 
-    function loadtable(){
+       const checkboxStates = [];
+        document.querySelectorAll
+        ('input.form-check-input[type="checkbox"]').forEach(cb => {
+        checkboxStates.push(cb.checked);
+    });
+    localStorage.setItem("checkboxStates", JSON.stringify(checkboxStates));
+}
+
+function loadtable() {
     const newtable = localStorage.getItem("loadtable");
     const newidcontr = localStorage.getItem("idtable");
+    const newtotal = localStorage.getItem("total");
+    const newconcluidas = localStorage.getItem("concluidas");
+    const newpendentes = localStorage.getItem("pendentes");
+    const checkboxStates = JSON.parse(localStorage.getItem("checkboxStates") || "[]");
 
-    document.getElementById("tarefa").focus()
+    document.getElementById("tarefa").focus();
 
-    if(newtable){
+    if (newtable) {
         tabela.innerHTML = newtable;
-        reatribuirEventos(); // <-- Adicione esta linha
-    }
-    if(newidcontr){
-        idconter = newidcontr;
+        reatribuirEventos();
+
+        // Aplicar estados dos checkboxes
+        const checkboxes = document.querySelectorAll
+        ('input.form-check-input[type="checkbox"]');
+            checkboxes.forEach((cb, index) => {
+                if (typeof checkboxStates[index] !== "undefined") {
+                cb.checked = checkboxStates[index];
+                aplicarEstiloCheckbox(cb); // <- só estilo
+            }
+            });
     }
 
+    if (newidcontr) {
+        idconter = parseInt(newidcontr);
     }
 
-    tabela.addEventListener('input', cachetable);
-;
-    window.addEventListener('DOMContentLoaded', loadtable);
+    if (newtotal) {
+        tarefasTotaisId = parseInt(newtotal);
+        total.innerHTML = tarefasTotaisId;
+    }
 
-    function reatribuirEventos() {
-        document.querySelectorAll('button[data-bs-target="#Modaldelete"]').forEach(btn => {
-            btn.onclick = function() { Remover(this); };
+    if (newconcluidas) {
+        tarefasConcluidasId = parseInt(newconcluidas);
+        conlcuidas.innerHTML = tarefasConcluidasId;
+    }
+
+    if (newpendentes) {
+        tarefasPendetesId = parseInt(newpendentes);
+        pendentes.innerHTML = tarefasPendetesId;
+    }
+}
+
+function reatribuirEventos() {
+    // Botão de deletar
+    document.querySelectorAll
+    ('button[data-bs-target="#Modaldelete"]').forEach
+    (btn => { btn.onclick = function () { Remover(this); };
+
+    });
+
+    // Reconecta os checkboxes
+    document.querySelectorAll
+    ('input.form-check-input[type="checkbox"]').forEach
+    (input => { input.onchange = function () { switchch(this);};
+    });
+
+}
+
+function aplicarEstiloCheckbox(cb) {
+    let linha = cb.closest("tr");
+    let tds = linha.querySelectorAll("td");
+    let botoes = linha.querySelectorAll("button");
+
+    if (cb.checked) {
+        tds.forEach(td => {
+            td.style.backgroundColor = "";
+            td.style.color = "";
         });
+        botoes.forEach(btn => btn.disabled = false);
+    } else {
+        tds.forEach(td => {
+            td.style.backgroundColor = "#505050";
+            td.style.color = "#888";
+        });
+        botoes.forEach(btn => btn.disabled = true);
     }
+}
 
-
+ // Alertas
 function alertadd(valor){
     let cor = "";
     let mensagem = "";
@@ -193,75 +325,80 @@ function alertadd(valor){
 
 }
 
-
+ // Configuração de Tema
 function darkmode(){
-    let emoji = document.getElementById("emoji");
-    emoji.innerHTML = "☀️";
 
-    // Body
-    let body = document.getElementsByClassName("body");
-    for (let i = 0; i < body.length; i++) {
-        body[i].className = "body-dark";
-    }
+let emoji = document.getElementById("emoji");
+emoji.innerHTML = "☀️";
 
-    // Sidebar
-    let sidebar = document.getElementsByClassName("side-bar");
-    for (let i = 0; i < sidebar.length; i++) {
-        sidebar[i].className = "sidebar-dark";
-    }
+// Body
+let body = document.getElementsByClassName("body");
+for (let i = 0; i < body.length; i++) {
+     body[i].className = "body-dark";
+}
 
-    // User profile
-    let user = document.getElementsByClassName("user-perfile");
-    for (let i = 0; i < user.length; i++) {
-        user[i].className = "user-perfile-dark";
-    }
+// Sidebar
+let sidebar = document.getElementsByClassName("side-bar");
+for (let i = 0; i < sidebar.length; i++) {
+     sidebar[i].className = "sidebar-dark";
+}
 
-    // Input container
-    let input = document.getElementsByClassName("inner-content");
-    for (let i = 0; i < input.length; i++) {
-        input[i].className = "inner-content-dark";
-    }
+ // User profile
+ let user = document.getElementsByClassName("user-perfile");
+ for (let i = 0; i < user.length; i++) {
+    user[i].className = "user-perfile-dark";
+}
 
-    // Tabela
-    let tabela = document.getElementsByClassName("table table-striped mt-5");
-    for (let i = 0; i < tabela.length; i++) {
-        tabela[i].className = "table-dark table table-striped mt-5";
-    }
+ // Input container
+ let input = document.getElementsByClassName("inner-content");
+ for (let i = 0; i < input.length; i++) {
+    input[i].className = "inner-content-dark";
+}
+
+ // Tabela
+ let tabela = document.getElementsByClassName
+ ("table table-striped mt-5");
+
+ for (let i = 0; i < tabela.length; i++) {
+    tabela[i].className = "table-dark table table-striped mt-5";
+ }
 }
 
 function lightmode(){
-    let emoji = document.getElementById("emoji");
-    emoji.innerHTML = "🌕";
+let emoji = document.getElementById("emoji");
+emoji.innerHTML = "🌕";
 
-    // Body
-    let body = document.getElementsByClassName("body-dark");
-    for (let i = 0; i < body.length; i++) {
-        body[i].className = "body";
-    }
+// Body
+let body = document.getElementsByClassName("body-dark");
+for (let i = 0; i < body.length; i++) {
+    body[i].className = "body";
+}
 
-    // Sidebar
-    let sidebar = document.getElementsByClassName("sidebar-dark");
-    for (let i = 0; i < sidebar.length; i++) {
-        sidebar[i].className = "side-bar";
-    }
+// Sidebar
+let sidebar = document.getElementsByClassName("sidebar-dark");
+for (let i = 0; i < sidebar.length; i++) {
+    sidebar[i].className = "side-bar";
+}
 
-    // User profile
-    let user = document.getElementsByClassName("user-perfile-dark");
-    for (let i = 0; i < user.length; i++) {
-        user[i].className = "user-perfile";
-    }
+// User profile
+let user = document.getElementsByClassName("user-perfile-dark");
+for (let i = 0; i < user.length; i++) {
+   user[i].className = "user-perfile";
+}
 
-    // Input container
-    let input = document.getElementsByClassName("inner-content-dark");
-    for (let i = 0; i < input.length; i++) {
-        input[i].className = "inner-content";
-    }
+// Input container
+let input = document.getElementsByClassName("inner-content-dark");
+for (let i = 0; i < input.length; i++) {
+    input[i].className = "inner-content";
+}
 
-    // Tabela
-    let tabela = document.getElementsByClassName("table-dark table table-striped mt-5");
-    for (let i = 0; i < tabela.length; i++) {
-        tabela[i].className = "table table-striped mt-5";
-    }
+// Tabela
+let tabela = document.getElementsByClassName
+("table-dark table table-striped mt-5");
+
+for (let i = 0; i < tabela.length; i++) {
+    tabela[i].className = "table table-striped mt-5";
+ }
 }
 
 function toggleMode() {
@@ -271,9 +408,8 @@ function toggleMode() {
         darkmode();
     }
     dark = !dark;
-    localStorage.setItem("darkmode", dark ? "1" : "0"); // Salva o estado
+    localStorage.setItem("darkmode", dark ? "1" : "0");
 }
-
 
 window.addEventListener('DOMContentLoaded', function() {
     loadtable();
@@ -284,7 +420,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
+//Configuração de Login
 function loginconfig(){
 let nome = localStorage.getItem("nome");
 let nivel= localStorage.getItem("nivel");
@@ -296,4 +432,3 @@ outnivel.innerHTML= nivel;
 
 
 }
-loginconfig()
